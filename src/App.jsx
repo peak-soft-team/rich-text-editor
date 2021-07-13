@@ -1,4 +1,21 @@
-import React from "react";
-import "./App.less";
-const App = () => <div className="App">Nargiz Group Azamat team Aigerim, Orozbek</div>;
-export default App;
+import React from 'react'
+import { BrowserRouter, Switch,Route } from 'react-router-dom'
+import Home from './pages/Home/index.jsx'
+import { Auth } from './pages/Auth/index.jsx'
+import './App.less'
+
+const App = () => {
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<Switch>
+					<Route path="/auth" component={Auth}/>
+					<Route exact path="/" component={Home} />
+					<Route path="*" component={Home} />
+				</Switch>	
+			</BrowserRouter>	
+		</div>
+	)
+}
+
+export default App
