@@ -23,7 +23,7 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
     "terser-webpack-plugin": "^5.1.4",
-    "webpack": "^5.42.0",
+    "webpack": "^5.45.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
@@ -34,6 +34,7 @@
   "description": "webpack course-2021",
   "privet": true,
   "scripts": {
+    "dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
