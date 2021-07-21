@@ -11,7 +11,12 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import { log_in } from '../../store/actions/auth';
+import {useSelector, useDispatch} from 'react-redux'
+import { useState } from 'react';
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -59,6 +64,18 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
 
+  const dispatch = useDispatch()
+  const success = useSelector((state) => state.success)
+
+  const [userEmail, setUserEmail] = useState('')
+  const [userPassword, setUserPassword] = useState('')
+
+  const history = useHistory()
+
+if(success) {
+    history.push('./welcome')
+}
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -82,6 +99,8 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={userEmail}
+              onChange={(e)=> setUserEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -93,6 +112,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={userPassword}
+              onChange={(e)=> setUserPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -104,6 +125,9 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={()=> {
+                dispatch(log_in({userPassword, userEmail}))
+              }}
             >
               Sign In
             </Button>
