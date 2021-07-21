@@ -23,7 +23,7 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
     "terser-webpack-plugin": "^5.1.4",
-    "webpack": "^5.42.0",
+    "webpack": "^5.45.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
@@ -34,6 +34,7 @@
   "description": "webpack course-2021",
   "privet": true,
   "scripts": {
+    "dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
@@ -54,11 +55,15 @@
     "@material-ui/icons": "^4.11.2",
     "animate.css": "^4.1.1",
     "babel-eslint": "^10.1.0",
+    "draft-js": "^0.11.7",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-image-gallery": "^1.2.4",
+    "react-mui-draft-wysiwyg": "^1.0.3",
     "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0"
   }

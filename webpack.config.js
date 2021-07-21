@@ -64,6 +64,7 @@ module.exports = {
   },
   output: {
     filename: filename("js"),
+    publicPath: '/',
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
@@ -78,6 +79,7 @@ module.exports = {
     port: 4200,
     open: true,
     hot: isDev,
+    historyApiFallback: true,
   },
   devtool: isProd ? false : "source-map",
   plugins: [
