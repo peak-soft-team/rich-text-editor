@@ -1,12 +1,27 @@
-import React from "react";
-import "./App.less";
-import { Login } from "./pages/Login";
+import React from 'react'
+import './App.less'
+import SignInSide from './pages/Login'
+import WelcomePage from './pages/Home'
+import {Editor} from './pages/MainLayout/index.jsx'
+import SignUp from './pages/SignUp'
 
-import { MainLayout } from "./pages/MainLayout/index.jsx";
-const App = () => (
-  <div className="App">
-      {/* <Login/> */}
-    <MainLayout className="animate__animated animate__pulse" />
-  </div>
-);
-export default App;
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+const App = () => {
+	const state = useSelector(state => state)
+
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<Switch>
+					<Route path='/welcome' component={WelcomePage} />
+					<Route path='/login' component={SignInSide} />
+					<Route path='/signup' component={SignUp} />
+					<Route path='/' component={Editor} />
+				</Switch>
+			</BrowserRouter>
+		</div>
+	)
+}
+export default App
