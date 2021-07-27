@@ -1,4 +1,6 @@
 import { ERROR, LOG_IN, LOG_OUT, SIGN_UP, SET_DATA } from "../actions/auth.js";
+import { Route } from "react-router-dom";
+import WelcomePage from "../../pages/Home/index.jsx";
 const local = JSON.parse(localStorage.getItem("users"));
 const initialState = {
   localUsers: [],
@@ -8,7 +10,6 @@ const initialState = {
     userEmail: "",
     userPassword: "",
     data: "",
-    settings: null,
   },
   success: false,
   error: false,
@@ -52,11 +53,9 @@ export const authReducer = (state = local ? local : initialState, action) => {
         errorMessage: action.message,
       };
     case LOG_OUT:
-      return initialState;
+      return <Route path="/welcome" component={WelcomePage} />;
+
     case SET_DATA:
-      // let set_datas = state.localUsers.findIndex(
-      //   (el) => el.
-      // )
       console.log(action);
       return {
         ...state,

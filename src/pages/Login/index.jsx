@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const success = useSelector((state) => state.auth.success);
+  const success = useSelector((state) => state.success);
   const [inEmail, setInEmail] = useState("");
   const [inPassword, setInPassword] = useState("");
   const history = useHistory();

@@ -14,6 +14,8 @@ import Container from "@material-ui/core/Container";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { sign_up } from "../../store/actions/auth";
+import Alert from "@material-ui/lab/Alert";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -24,6 +26,12 @@ function Copyright() {
   );
 }
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -42,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
 export default function SignUp() {
   const classes = useStyles();
   const [userEmail, setUserEmail] = useState("");
@@ -49,8 +58,9 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.auth);
+  // const state = useSelector((state) => state.auth);
   const history = useHistory();
+
   function signUp() {
     let gmail = /([a-zA-Z0-9\.]{3,15})\@gmail[\.]com/g;
     if (
@@ -69,6 +79,10 @@ export default function SignUp() {
       ) && history.push("/");
     } else {
       alert("invalid email or password");
+
+      // <Alert variant="filled" severity="warning">
+      //   This is a warning alert — invalid email or password!
+      // </Alert>;
     }
   }
   return (
