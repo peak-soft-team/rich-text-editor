@@ -6,10 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const loader = require("sass-loader");
-
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
-
 const optimization = () => {
   const config = {
     splitChunks: {
@@ -24,9 +22,7 @@ const optimization = () => {
   }
   return config;
 };
-
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
-
 const cssLoaders = (extra) => {
   const loaders = [
     {
@@ -40,7 +36,6 @@ const cssLoaders = (extra) => {
   }
   return loaders;
 };
-
 const babelOptions = (preset) => {
   const opts = {
     presets: [
@@ -54,17 +49,15 @@ const babelOptions = (preset) => {
   }
   return opts;
 };
-
 module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
   entry: {
     main: ["@babel/polyfill", "./index.jsx"],
-    // analytics: "./analytics.ts",
   },
   output: {
     filename: filename("js"),
-    publicPath: '/',
+    publicPath: "/",
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
@@ -132,7 +125,6 @@ module.exports = {
         test: /\.csv$/,
         use: ["csv-loader"],
       },
-
       {
         test: /\.(js|jsx|ts)$/,
         exclude: /(node_modules|bower_components|prod)/,

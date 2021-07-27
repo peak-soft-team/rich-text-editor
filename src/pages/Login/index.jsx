@@ -1,83 +1,75 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import {Link, useHistory} from 'react-router-dom'
-import { log_in } from '../../store/actions/auth';
-import {useSelector, useDispatch} from 'react-redux'
-import { useState } from 'react';
-
-
+import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { log_in } from "../../store/actions/auth";
+// import SimpleAlerts from '../../components/Allert';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link >
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+      {"Copyright © "}
+      <Link>Your Website</Link> {new Date().getFullYear()}
+      {"."}
     </Typography>
   );
 }
-
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: "100vh",
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundRepeat: "no-repeat",
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
 export default function SignInSide() {
   const classes = useStyles();
-
-  const dispatch = useDispatch()
-  const success = useSelector((state) => state.success)
-
-  const [userEmail, setUserEmail] = useState('')
-  const [userPassword, setUserPassword] = useState('')
-
-  const history = useHistory()
-
-if(success) {
-    history.push('./welcome')
-}
-
+  const dispatch = useDispatch();
+  const success = useSelector((state) => state.success);
+  const [inEmail, setInEmail] = useState("");
+  const [inPassword, setInPassword] = useState("");
+  const history = useHistory();
+  if (success) {
+    history.push("/");
+  }
   return (
     <Grid container component="main" className={classes.root}>
+      {/* <SimpleAlerts type="error">aza</SimpleAlerts> */}
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -99,8 +91,8 @@ if(success) {
               name="email"
               autoComplete="email"
               autoFocus
-              value={userEmail}
-              onChange={(e)=> setUserEmail(e.target.value)}
+              value={inEmail}
+              onChange={(e) => setInEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -112,30 +104,27 @@ if(success) {
               type="password"
               id="password"
               autoComplete="current-password"
-              value={userPassword}
-              onChange={(e)=> setUserPassword(e.target.value)}
+              value={inPassword}
+              onChange={(e) => setInPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={()=> {
-                dispatch(log_in({userPassword, userEmail}))
+              onClick={() => {
+                dispatch(log_in({ inEmail, inPassword })) && history.push("/");
               }}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link variant="body2">
-                  Forgot password?
-                </Link>
+                <Link variant="body2">Forgot password?</Link>
               </Grid>
               <Grid item>
                 <Link to="/signup" variant="body2">
