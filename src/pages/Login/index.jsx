@@ -58,15 +58,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function SignInSide() {
+  
   const classes = useStyles();
   const dispatch = useDispatch();
-  const success = useSelector((state) => state.success);
+  const success = useSelector((state) => state.authReducer.success);
   const [inEmail, setInEmail] = useState("");
   const [inPassword, setInPassword] = useState("");
   const history = useHistory();
+
   if (success) {
-    history.push("/");
-  }
+    history.push("/file");
+  } 
   return (
     <Grid container component="main" className={classes.root}>
       {/* <SimpleAlerts type="error">aza</SimpleAlerts> */}
@@ -117,7 +119,7 @@ export default function SignInSide() {
               color="primary"
               className={classes.submit}
               onClick={() => {
-                dispatch(log_in({ inEmail, inPassword })) && history.push("/");
+                dispatch(log_in({ inEmail, inPassword }))
               }}
             >
               Sign In

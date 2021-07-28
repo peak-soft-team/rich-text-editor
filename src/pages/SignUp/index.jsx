@@ -58,8 +58,10 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state.auth);
+  const state = useSelector((state) => state.authReducer.success);
   const history = useHistory();
+
+  if (state) history.push('/file')
 
   function signUp() {
     let gmail = /([a-zA-Z0-9\.]{3,15})\@gmail[\.]com/g;
@@ -76,7 +78,7 @@ export default function SignUp() {
           userEmail,
           userPassword,
         })
-      ) && history.push("/");
+      ) 
     } else {
       alert("invalid email or password");
 

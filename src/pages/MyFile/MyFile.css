@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+.main {
+	height: 100vh;
+	background-color: rgb(233, 233, 233);
+	padding-top: 25px;
+}
+.menu {
+	position: absolute;
+	left: 0;
+	top: 0px;
+	width: 20%;
+	height: 103vh;
+	background-color: #4682b4;
+}
+.menu ul {
+	height: 100px;
+	font-size: 20px;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	padding: 30px;
+	margin: 0;
+	justify-content: space-between;
+}
+.menu ul li {
+	padding: 5px;
+	margin-bottom: 7px;
+	cursor: pointer;
+	color: white;
+}
+
+.file {
+	width: 40%;
+	height: 90vh;
+	margin: 0px auto;
+	padding: 15px;
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+		rgba(0, 0, 0, 0.23) 0px 6px 6px;
+	background-color: rgb(255, 255, 255);
+}
+a {
+	color: white;
+	text-decoration: none;
+}
+@media (max-width: 420px) {
+	.main {
+		height: 100vh;
+		background-color: rgb(233, 233, 233);
+	}
+	.menu {
+		position: absolute;
+		left: 0;
+		top: 0px;
+		width: 35%;
+		height: 103vh;
+		background-color: #4682b4;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+		rgba(0, 0, 0, 0.23) 0px 6px 6px;
+	}
+	.menu ul {
+		height: 100px;
+		font-size: 12px;
+		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		list-style: none;
+		padding:0 15px 0 10px;
+		margin: 0;
+		justify-content: space-between;
+	}
+	.menu ul li {
+		padding: 5px;
+		margin-bottom: 7px;
+		cursor: pointer;
+		color: white;
+	}
+	.file {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 65%;
+		height: 105vh;
+        padding: 10px;
+	}
+}
