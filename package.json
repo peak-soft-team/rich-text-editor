@@ -34,7 +34,7 @@
   "description": "webpack course-2021",
   "privet": true,
   "engines": {
-    "node": ">=10.0.0"
+    "node": "16.13.1"
   },
   "scripts": {
     "dev-server": "webpack-dev-server",
