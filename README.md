@@ -1,7 +1,7 @@
 # Rich-text-editor
 
 Rich text editor is online text editor 
-https://epic-lichterman-2bce4f.netlify.app/welcome
+https://rich-text-editor-one.netlify.app/welcome
 
 ## Installation
 
