@@ -1,7 +1,7 @@
 # Rich-text-editor
 
 Rich text editor is online text editor 
-https://rich-text-editor-one.netlify.app/welcome
+https://rich-text-editor-one.netlify.app
 
 ## Installation
 
